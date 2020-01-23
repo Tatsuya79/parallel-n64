@@ -737,8 +737,12 @@ void n64video_update_screen(void)
         uint32_t lineshifter = !ctrl.serrate;
         vactivelines >>= lineshifter;
 
+   /* TOFIX this is cropping the picture and adding black borders on the sides
         minhpass = h_start_clamped ? 0 : 8;
         maxhpass = hres_clamped ? hres : (hres - 7);
+   */
+        minhpass = 0;
+        maxhpass = hres;
 
         // run filter update in parallel if enabled
         if (config.vi.mode == VI_MODE_NORMAL) {
